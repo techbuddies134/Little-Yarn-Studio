@@ -26,7 +26,6 @@ export default function Home() {
     if (savedReviews) {
       setReviews(JSON.parse(savedReviews));
     } else {
-      // Default dummy reviews (agar koi na ho)
       setReviews([
         { id: 1, name: "Ayesha", product: "Crochet Gloves", text: "Bohat pyari gloves hain, quality zabardast hai!", rating: 5 },
         { id: 2, name: "Fatima", product: "Handmade Gajra", text: "Meri shaadi par sabne tareef ki. Thank you Daima!", rating: 5 }
@@ -43,19 +42,17 @@ export default function Home() {
     const updatedReviews = [reviewToAdd, ...reviews];
     setReviews(updatedReviews);
     
-    // Browser memory mein save karein
     localStorage.setItem("littleYarnReviews", JSON.stringify(updatedReviews));
     
-    // Form clear karein
     setNewReview({ name: "", product: "", text: "", rating: 5 });
     alert("Aapka review add ho gaya! Shukriya 🤍");
   };
 
-  // AAPKE NAYE PRODUCTS
+  // AAPKE NAYE PRODUCTS (Gajra price 1200 kar diya hai)
   const featuredProducts = [
     { id: 1, name: "Crochet Gloves", price: "PKR 1,500", img: "https://hayhaycrochet.com/wp-content/uploads/2022/12/IMG_4214-1-1024x1024.jpg", tag: "Winter Special" },
     { id: 2, name: "Cozy Muffler", price: "PKR 2,000", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR62F83PS5lRr9BRXV8DnFPm4hu7FKs5gN7GeGdRdTy1Ztm4OBrqWpqO5o&s=10", tag: "Best Seller" },
-    { id: 3, name: "Handmade Gajra", price: "PKR 500", img: "https://pk-live-21.slatic.net/kf/S92d1b48c9cdf43eab5163e6ab2583dcfV.jpg", tag: "New" },
+    { id: 3, name: "Handmade Gajra", price: "PKR 1,200", img: "https://pk-live-21.slatic.net/kf/S92d1b48c9cdf43eab5163e6ab2583dcfV.jpg", tag: "New" },
     { id: 4, name: "Crochet Bag", price: "PKR 2,500", img: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT7we60WaU90HskG1r_fzS0-_rCllDYMfH7_0nankewp5Yk9ScCF_e5wwp4&s=10", tag: "" },
     { id: 5, name: "Crochet Mobile Cover", price: "PKR 1,200", img: "https://i.etsystatic.com/62543593/r/il/45cd26/8020715021/il_fullxfull.8020715021_gpb6.jpg", tag: "Customizable" },
   ];
@@ -278,7 +275,7 @@ export default function Home() {
         </div>
       </section>
 
-      {/* 6. REVIEWS SECTION (NAYA ADD HUA HAI) */}
+      {/* 6. REVIEWS SECTION */}
       <section id="reviews" className="py-20 bg-[#FFFCF6] border-t border-[#E8D7C1] scroll-mt-20">
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
@@ -287,8 +284,6 @@ export default function Home() {
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            
-            {/* Left: Reviews List */}
             <div className="space-y-4">
               {reviews.map((review) => (
                 <div key={review.id} className="bg-[#FBF6E9] p-6 rounded-2xl border border-[#E8D7C1]">
@@ -306,7 +301,6 @@ export default function Home() {
               ))}
             </div>
 
-            {/* Right: Add Review Form */}
             <div className="bg-[#E8D7C1]/20 p-6 rounded-2xl border border-[#E8D7C1] h-fit">
               <h3 className="font-serif text-xl font-bold text-[#344936] mb-4">Add Your Review</h3>
               <form onSubmit={handleAddReview} className="space-y-4">
@@ -362,7 +356,6 @@ export default function Home() {
                 </button>
               </form>
             </div>
-
           </div>
         </div>
       </section>
